@@ -1,13 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import ProductShowcase from '@/components/ProductShowcase';
+import Footer from '@/components/Footer';
+import { Helmet } from 'react-helmet';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <Helmet>
+        <title>DeseoVivo - Luxury Intimate Wellness | Premium Erotic Boutique</title>
+        <meta 
+          name="description" 
+          content="Discover DeseoVivo's curated collection of luxury intimate wellness products. Premium quality, discreet shipping, and sophisticated design for discerning adults." 
+        />
+        <meta name="keywords" content="luxury intimate wellness, premium erotic boutique, adult toys, intimate products, luxury wellness" />
+        <link rel="canonical" href="https://deseovivo.com" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <Hero />
+          <ProductShowcase />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

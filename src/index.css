@@ -1,96 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DeseoVivo Luxury Erotic Boutique Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    /* Luxury Brand Colors - HSL Values */
+    --luxury-black: 0 0% 0%;
+    --luxury-gold: 45 68% 52%;
+    --luxury-charcoal: 0 0% 10%;
+    --luxury-white: 0 0% 100%;
+    --luxury-cream: 45 20% 96%;
+    --luxury-gold-light: 45 68% 65%;
+    --luxury-gold-dark: 45 68% 35%;
+    
+    /* Semantic Color System */
+    --background: var(--luxury-white);
+    --foreground: var(--luxury-black);
+    
+    --card: var(--luxury-white);
+    --card-foreground: var(--luxury-black);
+    
+    --popover: var(--luxury-white);
+    --popover-foreground: var(--luxury-black);
+    
+    --primary: var(--luxury-gold);
+    --primary-foreground: var(--luxury-black);
+    
+    --secondary: var(--luxury-charcoal);
+    --secondary-foreground: var(--luxury-white);
+    
+    --muted: var(--luxury-cream);
+    --muted-foreground: var(--luxury-charcoal);
+    
+    --accent: var(--luxury-gold);
+    --accent-foreground: var(--luxury-black);
+    
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: var(--luxury-white);
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: var(--luxury-gold);
+    
+    --radius: 0.375rem;
+    
+    /* Luxury Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--luxury-gold-dark)), hsl(var(--luxury-gold)), hsl(var(--luxury-gold-light)));
+    --gradient-black: linear-gradient(135deg, hsl(var(--luxury-black)), hsl(var(--luxury-charcoal)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--luxury-white)), hsl(var(--luxury-cream)));
+    
+    /* Premium Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--luxury-black) / 0.25);
+    --shadow-gold: 0 8px 32px -4px hsl(var(--luxury-gold) / 0.3);
+    --shadow-elegant: 0 4px 24px -2px hsl(var(--luxury-black) / 0.1);
+    
+    /* Typography Scale */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    
+    /* Animations */
+    --transition-luxury: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-
+  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: var(--luxury-black);
+    --foreground: var(--luxury-white);
+    
+    --card: var(--luxury-charcoal);
+    --card-foreground: var(--luxury-white);
+    
+    --popover: var(--luxury-charcoal);
+    --popover-foreground: var(--luxury-white);
+    
+    --primary: var(--luxury-gold);
+    --primary-foreground: var(--luxury-black);
+    
+    --secondary: var(--luxury-charcoal);
+    --secondary-foreground: var(--luxury-white);
+    
+    --muted: var(--luxury-charcoal);
+    --muted-foreground: var(--luxury-cream);
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
   }
 }
 
@@ -98,8 +96,151 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Luxury Button Variants */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wider uppercase;
+    @apply bg-gradient-to-r from-luxury-gold to-luxury-gold-light text-luxury-black;
+    @apply border border-transparent rounded-md shadow-lg;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-gold focus:outline-none focus:ring-2 focus:ring-luxury-gold focus:ring-offset-2;
+  }
+  
+  .btn-luxury-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wider uppercase;
+    @apply bg-transparent text-luxury-gold border border-luxury-gold;
+    @apply rounded-md transition-all duration-300 ease-out;
+    @apply hover:bg-luxury-gold hover:text-luxury-black hover:scale-105;
+  }
+  
+  .btn-luxury-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium;
+    @apply bg-transparent text-luxury-charcoal hover:text-luxury-gold;
+    @apply transition-colors duration-300 ease-out;
+  }
+  
+  /* Hero Section */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--luxury-black)) 0%, hsl(var(--luxury-charcoal)) 100%);
+  }
+  
+  /* Luxury Card */
+  .card-luxury {
+    @apply bg-card border border-border rounded-lg shadow-elegant;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-luxury hover:scale-105;
+  }
+  
+  /* Premium Text Styles */
+  .text-luxury-hero {
+    @apply font-heading text-5xl md:text-7xl font-bold tracking-tight;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-luxury-title {
+    @apply font-heading text-3xl md:text-4xl font-semibold tracking-tight text-luxury-charcoal;
+  }
+  
+  .text-luxury-subtitle {
+    @apply font-body text-lg text-muted-foreground leading-relaxed;
+  }
+  
+  /* Animations */
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+  
+  /* Luxury Hover Effects */
+  .luxury-hover {
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-gold;
+  }
+  
+  .gold-hover {
+    @apply transition-colors duration-300 ease-out;
+    @apply hover:text-luxury-gold;
+  }
+  
+  /* Premium Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .container-luxury {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
