@@ -88,11 +88,11 @@ const Footer = () => {
             <h4 className="font-heading text-lg font-semibold mb-6">Support</h4>
             <nav className="space-y-3">
               {[
-                { name: 'Customer Care', path: '/support' },
+                { name: 'Customer Care', path: '/contact' },
                 { name: 'Size Guide', path: '/size-guide' },
-                { name: 'Shipping & Returns', path: '/shipping' },
-                { name: 'Privacy Policy', path: '/privacy' },
-                { name: 'Terms of Service', path: '/terms' },
+                { name: 'Shipping & Returns', path: '/legal/shipping-policy' },
+                { name: 'Privacy Policy', path: '/legal/privacy-policy' },
+                { name: 'Terms of Service', path: '/legal/terms' },
                 { name: 'FAQ', path: '/faq' }
               ].map((link) => (
                 <Link
@@ -167,13 +167,13 @@ const Footer = () => {
               © 2024 DeseoVivo. All rights reserved. Adult content - 18+ only.
             </p>
             <div className="flex items-center space-x-6 text-sm text-luxury-white/70">
-              <Link to="/privacy" className="hover:text-luxury-gold transition-colors">
+              <Link to="/legal/privacy-policy" className="hover:text-luxury-gold transition-colors">
                 Privacy
               </Link>
-              <Link to="/terms" className="hover:text-luxury-gold transition-colors">
+              <Link to="/legal/terms" className="hover:text-luxury-gold transition-colors">
                 Terms
               </Link>
-              <Link to="/cookies" className="hover:text-luxury-gold transition-colors">
+              <Link to="/legal/cookie-policy" className="hover:text-luxury-gold transition-colors">
                 Cookies
               </Link>
             </div>

@@ -159,7 +159,7 @@ const ProductShowcase = () => {
                   </div>
                   
                   {/* Add to Cart */}
-                  <Link to={`/products/${product.id}`}>
+                                <Link to={`/products/${product.id}`}>
                     <Button className="w-full btn-luxury-outline">
                       View Details
                     </Button>
