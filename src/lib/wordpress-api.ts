@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 // Configuration - you'll need to set these for your WordPress site
 const WP_CONFIG = {
-  baseUrl: process.env.VITE_WP_BASE_URL || 'https://your-wordpress-site.com',
-  consumerKey: process.env.VITE_WC_CONSUMER_KEY || '',
-  consumerSecret: process.env.VITE_WC_CONSUMER_SECRET || '',
+  baseUrl: import.meta.env.VITE_WP_BASE_URL || 'https://your-wordpress-site.com',
+  consumerKey: import.meta.env.VITE_WC_CONSUMER_KEY || '',
+  consumerSecret: import.meta.env.VITE_WC_CONSUMER_SECRET || '',
   apiVersion: 'wc/v3'
 };
 
