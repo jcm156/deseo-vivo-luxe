@@ -32,7 +32,7 @@ const Checkout = () => {
       variant: 'Rose Gold',
       price: 299,
       quantity: 1,
-      image: '/placeholder-product.jpg'
+      image: 'https://images.unsplash.com/photo-1585565804773-f2b0cd3056c7?w=400'
     }
   ];
 
@@ -256,7 +256,7 @@ const Checkout = () => {
                               alt={item.name}
                               className="w-full h-full object-cover rounded-lg"
                               onError={(e) => {
-                                e.currentTarget.src = '/placeholder-product.jpg';
+                                e.currentTarget.src = 'https://images.unsplash.com/photo-1585565804773-f2b0cd3056c7?w=400';
                               }}
                             />
                           </div>
