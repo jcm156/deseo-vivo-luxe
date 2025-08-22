@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import ProductShowcase from '@/components/ProductShowcase';
+import WordPressProductShowcase from '@/components/WordPressProductShowcase';
 import Footer from '@/components/Footer';
 import { Helmet } from 'react-helmet';
 
@@ -21,7 +21,7 @@ const Index = () => {
         <Header />
         <main>
           <Hero />
-          <ProductShowcase />
+          <WordPressProductShowcase />
         </main>
         <Footer />
       </div>
