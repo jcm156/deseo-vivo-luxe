@@ -18,9 +18,11 @@ import product4 from '@/assets/product-4.jpg';
 
 type SortOption = 'newest' | 'price-low' | 'price-high' | 'bestsellers';
 type CategoryFilter = 'all' | 'for-her' | 'for-him' | 'for-couples';
+type TagFilter = 'new' | 'bestseller' | 'limited';
 
 const ProductShowcase = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
+  const [selectedTags, setSelectedTags] = useState<TagFilter[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>('newest');
 
   const products = [
@@ -32,6 +34,7 @@ const ProductShowcase = () => {
       image: product1,
       isNew: false,
       isBestseller: true,
+      isLimited: false,
       rating: 4.9,
       reviews: 127,
       originalPrice: 399,
@@ -45,6 +48,7 @@ const ProductShowcase = () => {
       image: product2,
       isNew: true,
       isBestseller: false,
+      isLimited: true,
       rating: 4.8,
       reviews: 89,
       description: 'Complete luxury experience for intimate moments'
@@ -57,6 +61,7 @@ const ProductShowcase = () => {
       image: product3,
       isNew: false,
       isBestseller: false,
+      isLimited: false,
       rating: 4.7,
       reviews: 156,
       description: 'Sophisticated wellness for the modern gentleman'
@@ -69,6 +74,7 @@ const ProductShowcase = () => {
       image: product4,
       isNew: false,
       isBestseller: true,
+      isLimited: true,
       rating: 5.0,
       reviews: 23,
       description: 'Hand-crafted luxury with 24k gold accents'
@@ -81,6 +87,7 @@ const ProductShowcase = () => {
       image: product1,
       isNew: true,
       isBestseller: false,
+      isLimited: false,
       rating: 4.6,
       reviews: 78,
       description: 'Enhance connection with premium accessories'
@@ -93,6 +100,7 @@ const ProductShowcase = () => {
       image: product2,
       isNew: false,
       isBestseller: true,
+      isLimited: false,
       rating: 4.8,
       reviews: 94,
       description: 'Luxury wellness designed for discerning men'
@@ -106,17 +114,44 @@ const ProductShowcase = () => {
     { value: 'for-couples', label: 'For Couples' }
   ];
 
-  const sortOptions = [
-    { value: 'newest', label: 'Newest First' },
-    { value: 'price-low', label: 'Price: Low to High' },
-    { value: 'price-high', label: 'Price: High to Low' },
-    { value: 'bestsellers', label: 'Bestsellers' }
+  const tags = [
+    { value: 'new', label: 'New' },
+    { value: 'bestseller', label: 'Bestseller' },
+    { value: 'limited', label: 'Limited Edition' }
   ];
+
+  const toggleTag = (tag: TagFilter) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const resetFilters = () => {
+    setSelectedCategory('all');
+    setSelectedTags([]);
+    setSortBy('newest');
+  };
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = selectedCategory === 'all' 
       ? products 
       : products.filter(product => product.category === selectedCategory);
+
+    // Apply tag filters
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(product => {
+        return selectedTags.some(tag => {
+          switch (tag) {
+            case 'new': return product.isNew;
+            case 'bestseller': return product.isBestseller;
+            case 'limited': return product.isLimited;
+            default: return false;
+          }
+        });
+      });
+    }
 
     return filtered.sort((a, b) => {
       switch (sortBy) {
@@ -131,7 +166,14 @@ const ProductShowcase = () => {
           return Number(b.isNew) - Number(a.isNew) || b.id - a.id;
       }
     });
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory, selectedTags, sortBy]);
+
+  const sortOptions = [
+    { value: 'newest', label: 'Newest First' },
+    { value: 'price-low', label: 'Price: Low to High' },
+    { value: 'price-high', label: 'Price: High to Low' },
+    { value: 'bestsellers', label: 'Bestsellers' }
+  ];
 
   return (
     <section className="section-padding bg-luxury-cream/30">
@@ -148,6 +190,19 @@ const ProductShowcase = () => {
 
         {/* Filters and Sorting */}
         <div className="mb-12">
+          {/* Reset Button - only show if filters are active */}
+          {(selectedCategory !== 'all' || selectedTags.length > 0 || sortBy !== 'newest') && (
+            <div className="flex justify-center mb-6">
+              <Button
+                variant="ghost"
+                onClick={resetFilters}
+                className="text-luxury-charcoal hover:text-luxury-gold hover:bg-luxury-gold/10"
+              >
+                Reset All Filters
+              </Button>
+            </div>
+          )}
+
           {/* Category Filters */}
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             {categories.map((category) => (
@@ -162,6 +217,25 @@ const ProductShowcase = () => {
                 }`}
               >
                 {category.label}
+              </Button>
+            ))}
+          </div>
+
+          {/* Tag Filters */}
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            {tags.map((tag) => (
+              <Button
+                key={tag.value}
+                variant={selectedTags.includes(tag.value as TagFilter) ? "default" : "outline"}
+                size="sm"
+                onClick={() => toggleTag(tag.value as TagFilter)}
+                className={`transition-all duration-300 ${
+                  selectedTags.includes(tag.value as TagFilter)
+                    ? 'bg-luxury-charcoal text-white hover:bg-luxury-charcoal/90'
+                    : 'border-luxury-charcoal/20 text-luxury-charcoal hover:border-luxury-charcoal hover:bg-luxury-charcoal/10'
+                }`}
+              >
+                {tag.label}
               </Button>
             ))}
           </div>
@@ -211,6 +285,11 @@ const ProductShowcase = () => {
                     {product.isBestseller && (
                       <Badge className="bg-luxury-charcoal text-white font-medium">
                         Bestseller
+                      </Badge>
+                    )}
+                    {product.isLimited && (
+                      <Badge className="bg-red-600 text-white font-medium">
+                        Limited
                       </Badge>
                     )}
                   </div>
