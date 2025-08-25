@@ -1,0 +1,189 @@
+/*
+Theme Name: Deseo Vivo Luxe
+Theme URI: https://github.com/jcm156/deseo-vivo-luxe
+Author: JCM156
+Author URI: https://github.com/jcm156
+Description: A luxurious WordPress theme featuring elegant design with black and gold accents
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: deseo-vivo-luxe
+*/
+
+/* ---------- Custom Properties (Variables) ---------- */
+:root {
+    /* Colors */
+    --color-black: #0a0a0a;
+    --color-gold: #d4af37;
+    --color-white: #ffffff;
+    --color-gray-light: #f5f5f5;
+    --color-gray: #666666;
+    
+    /* Typography */
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Lato', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    
+    /* Container widths */
+    --container-max: 1200px;
+    --container-narrow: 960px;
+}
+
+/* ---------- Reset & Base Styles ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+/* ---------- Grid System ---------- */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-gold);
+}
+
+.btn-secondary {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-black);
+    color: var(--color-gold);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.badge-primary {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+}
+
+.badge-secondary {
+    background-color: var(--color-black);
+    color: var(--color-gold);
+}
+
+/* ---------- WooCommerce Base Styles ---------- */
+/* Product Grid */
+.woocommerce ul.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Single Product */
+.woocommerce div.product {
+    margin-bottom: var(--spacing-lg);
+}
+
+.woocommerce-Price-amount {
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+/* Cart & Checkout */
+.woocommerce-cart-form,
+.woocommerce-checkout {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ---------- Responsive Design ---------- */
+/* Mobile First Approach */
+@media screen and (min-width: 576px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .container-narrow {
+        max-width: var(--container-narrow);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    html {
+        font-size: 18px;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+    .no-print {
+        display: none;
+    }
+}
